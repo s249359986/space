@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../css/layer.css" type="text/css" rel="stylesheet">
+
+    <script src="../js/layer.js"></script>
+</head>
+<body>
+<script>
+
+    layer.open({
+        content: '通过style设置你想要的样式',
+        style: 'background-color:#09C1FF; color:#fff; border:none;',
+        time: 2
+    });
+
+    layer.open({
+        title: [
+            '我是标题',
+            'background-color:#8DCE16; color:#fff;'
+        ],
+        content: '标题风格任你定义。。'
+
+    });
+
+
+    layer.open({
+        content: '通过style设置你想要的样式',
+        btn: ['OK']
+    });
+
+
+
+    layer.open({
+        content: '你是想确认呢，还是想取消呢？',
+        btn: ['确认', '取消'],
+        shadeClose: false,
+        yes: function(){
+            layer.open({content: '你点了确认', time: 1});
+        }, no: function(){
+            layer.open({content: '你选择了取消', time: 1});
+        }
+    });
+
+
+    var pageii = layer.open({
+        type: 1,
+        content: html,
+        style: 'position:fixed; left:0; top:0; width:100%; height:100%; border:none;'
+    });
+
+</script>
+</body>
+</html>

@@ -52,7 +52,9 @@ ready.touch = function(elem, fn){
   }, false); 
 };
 
-var index = 0, classs = ['layermbox'], Layer = function(options){
+var index = 0,
+    classs = ['layermbox'],
+    Layer = function(options){
   var that = this;
   that.config = ready.extend(options);
   that.view();
@@ -211,7 +213,7 @@ win.layer = {
     var link = doc.createElement('link');
     link.href = path + 'need/layer.css';
     link.type = 'text/css';
-    link.rel = 'styleSheet'
+    link.rel = 'styleSheet';
     link.id = 'layermcss';
     return link;
   }());
