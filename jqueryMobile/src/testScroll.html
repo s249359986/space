@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+
+    <script type="text/javascript" src="http://s1.qhimg.com/static/1c44f7af3eca2a0d/jquery-1.9.1.js" ></script>
+    <script src="//cdn.bootcss.com/iScroll/5.2.0/iscroll.js"></script>
+    <style>
+
+
+        body, div, ul, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td { padding:0;margin:0; }
+        ul,li{ list-style: none;list-style-type:none;}
+        .date_no1,.date_no2,.date_no3
+        {
+            height:45px;
+            overflow: hidden;
+            position: absolute;
+            background-color: white;
+            width: 33.333%;
+            text-align: center;
+        }
+        .date_no1
+        {
+            left: 0px;
+        }
+        .date_no2
+        {
+            left:33.333%;
+        }
+        .date_no3
+        {
+            left:66.666%;
+        }
+        .date_shadow
+        {
+
+            display: block;
+            position: absolute;
+            width: 100%;height: 100%;
+            top:0;left:0;
+            background: #000;
+            filter:alpha(Opacity=50);
+            -moz-opacity:0.5;opacity: 0.5;
+            z-index: 111;
+        }
+        .date_mark
+        {
+            position: absolute;
+            top:10px;
+            background: #eee;
+            border: 1px solid #eee;
+            width: 100%;
+            height: 15px;
+
+        }
+        .date_wrap
+        {
+            border: 1px red solid;height:45px;position: relative;
+            z-index: 999;
+        }
+        .date_part
+        {
+            position: relative;
+            height: 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="date_shadow" style="display: block;"></div>
+<div class="date_wrap" style="border: 1px red solid;height:45px;position: absolute;top: 30%;width: 100%;">
+    <section>
+    <div class="date_part">
+    <div class="date_mark"></div>
+<div class="date_no1 date_id_no1">
+    <ul>
+    </ul>
+</div>
+    <div class="date_no2 date_id_no2">
+        <ul>
+        </ul>
+    </div>
+    <div class="date_no3 date_id_no3">
+        <ul>
+        </ul>
+    </div>
+    </div>
+    <div class="date_part" style="">
+        <div class="date_mark"></div>
+        <div class="date_no1 date_id_no4">
+            <ul>
+            </ul>
+        </div>
+        <div class="date_no2 date_id_no5">
+            <ul>
+            </ul>
+        </div>
+        <div class="date_no3 date_id_no6">
+            <ul>
+            </ul>
+        </div>
+    </div>
+</section>
+</div>
+
+<script>
+
+
+
+
+
+    (function($){
+
+
+        function createPlatform()
+        {
+
+            var str='<div class="date_shadow" style="display: block;"></div>'+
+        '<div class="date_wrap" style="border: 1px red solid;height:45px;position: absolute;top: 30%;width: 100%;">'+
+                '<section>'+
+                '<div class="date_part">'+
+                '<div class="date_mark"></div>'+
+        '<div class="date_no1 date_id_no1">'+
+                '<ul>'+
+                '</ul>'+
+        '</div>'+
+        '<div class="date_no2 date_id_no2">'+
+                '<ul>'+
+                '</ul>'+
+        '</div>'+
+        '<div class="date_no3 date_id_no3">'+
+                '<ul>'+
+                '</ul>'+
+        '</div>'+
+        '</div>'+
+        '<div class="date_part" style="">'+
+                '<div class="date_mark"></div>'+
+        '<div class="date_no1 date_id_no4">'+
+                '<ul>'+
+                '</ul>'+
+        '</div>'+
+        '<div class="date_no2 date_id_no5">'+
+                '<ul>'+
+                '</ul>'+
+        '</div>'+
+        '<div class="date_no3 date_id_no6">'+
+                '<ul>'+
+                '</ul>'+
+        '</div>'+
+        '</div>'+
+        '</section>'+
+        '</div>';
+
+            return str;
+
+        }
+        function createYEAR_UL(opts) {
+            var str = "<li>&nbsp;</li>";
+
+            for (var i = opts.beginyear; i <= opts.endyear; i++) {
+                str += '<li>' + i + '年</li>';
+            }
+            return str + "<li>&nbsp;</li>";
+
+
+
+            $(".date_id_no1 ul").html(createYEAR_UL(opts));
+        }
+
+
+
+
+
+
+
+
+
+
+        $.fn.SDTM=function(options){
+            var that = $(this);
+            var docType = that.is('input');
+            var datetime = false;
+            var nowdate = new Date();
+            var indexY = 1,
+                    indexM = 1,
+                    indexD = 1;
+            var indexH = 1,
+                    indexI = 1,
+                    indexS = 0;
+            var initY = parseInt((nowdate.getYear() + "").substr(1, 2));
+            var initM = parseInt(nowdate.getMonth() + "") + 1;
+            var initD = parseInt(nowdate.getDate() + "");
+            var initH = parseInt(nowdate.getHours());
+            var initI = parseInt(nowdate.getMinutes());
+            var initS = parseInt(nowdate.getYear());
+            var yearScroll = null,
+                    monthScroll = null,
+                    dayScroll = null;
+            var HourScroll = null,
+                    MinuteScroll = null,
+                    SecondScroll = null;
+            var defaultOptions = {
+                beginyear: 1900, //日期--年--份开始
+                endyear: 2999, //日期--年--份结束
+                beginmonth: 1, //日期--月--份结束
+                endmonth: 12, //日期--月--份结束
+                beginday: 1, //日期--日--份结束
+                endday: 31, //日期--日--份结束
+                beginhour: 1,
+                endhour: 12,
+                beginminute: 00,
+                endminute: 59,
+                curdate: true, //打开日期是否定位到当前日期
+                theme: "date", //控件样式（1：日期，2：日期+时间）
+                mode: null, //操作模式（滑动模式）
+                event: "click", //打开日期插件默认方式为点击后后弹出日期
+                show: true
+            };
+
+
+            //用户选项覆盖插件默认选项
+            var opts = $.extend(true, {}, defaultOptions, options);
+
+
+            if (!opts.show) {
+                that.unbind('click');
+            } else {
+                //绑定事件（默认事件为获取焦点）
+                that.bind(opts.event, function() {
+                    createPlatform();//创建脚手架
+
+                    $("#monthwrapper ul").html(createMONTH_UL());
+                    $("#daywrapper ul").html(createDAY_UL());
+
+                    init_iScrll(); //初始化iscrll
+
+                    showPlatform();//展示框架
+
+                    that.blur();
+                    if (datetime) {
+                        showdatetime();
+                        refreshTime();
+                    }
+                    //refreshDate();
+
+                    setDate();
+
+                    bindButton();
+                });
+            }
+
+
+
+
+        }
+
+
+    })(jQuery);
+
+
+
+
+
+
+
+    var myScroll = new IScroll('.date_id_no1',{
+        mouseWheel: true,
+        scrollbars: false
+    });
+    var myScroll1 = new IScroll('.date_id_no2',{
+        mouseWheel: true,
+        scrollbars: false
+    });
+
+    var myScroll2 = new IScroll('.date_id_no3',{
+        mouseWheel: true,
+        scrollbars: false
+    });
+    var myScroll3 = new IScroll('.date_id_no4',{
+        mouseWheel: true,
+        scrollbars: false
+    });
+    var myScroll4 = new IScroll('.date_id_no5',{
+        mouseWheel: true,
+        scrollbars: false
+    });
+
+    var myScroll5 = new IScroll('.date_id_no6',{
+        mouseWheel: true,
+        scrollbars: false
+    });
+
+</script>
+</body>
+</html>

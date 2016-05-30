@@ -1,8 +1,3 @@
-/* 
- * 日期插件
- * 滑动选取日期（年，月，日）
- * V1.2
- */
 (function($) {
     $.fn.date = function(options, Ycallback, Ncallback) {
         //插件默认选项
@@ -45,7 +40,6 @@
             event: "click", //打开日期插件默认方式为点击后后弹出日期
             show: true
         };
-        debugger;
         //用户选项覆盖插件默认选项   
         var opts = $.extend(true, {}, $.fn.date.defaultOptions, options);
         if (opts.theme === "datetime") {
@@ -56,24 +50,33 @@
         } else {
             //绑定事件（默认事件为获取焦点）
             that.bind(opts.event, function() {
-                createUL(); //动态生成控件显示的日期
+                createPlatform();//创建脚手架
+                $("#yearwrapper ul").html(createYEAR_UL());
+                $("#monthwrapper ul").html(createMONTH_UL());
+                $("#daywrapper ul").html(createDAY_UL());
+
                 init_iScrll(); //初始化iscrll
-                extendOptions(); //显示控件
+
+                showPlatform();//展示框架
+
                 that.blur();
                 if (datetime) {
                     showdatetime();
                     refreshTime();
                 }
-                refreshDate();
+                //refreshDate();
+
+                setDate();
+
                 bindButton();
             });
         }
         //>2000年
         if(opts.beginyear<2000){
             initY=initY+100;
-        }      
+        }
 
-        function refreshDate() {
+        function setDate() {
             yearScroll.refresh();
             monthScroll.refresh();
             dayScroll.refresh();
@@ -103,14 +106,14 @@
             indexD = 1;
         }
 
-        function resetInitDete() { 
-            
+        function resetInitDete() {
+
             if (opts.curdate) {
                 return false;
             } else if (that.val() === "") {
                 return false;
             }
-            
+
             initY = parseInt(that.val().substr(2, 2));
             initM = parseInt(that.val().substr(5, 2));
             initD = parseInt(that.val().substr(8, 2));
@@ -151,11 +154,12 @@
                 //Ncallback(false);
             });
         }
-
-        function extendOptions() {
+        function showPlatform()
+        {
             $("#datePage").show();
             $("#dateshadow").show();
         }
+
 
         //日期滑动
         function init_iScrll() {
@@ -241,12 +245,54 @@
             return (new Date(new_date.getTime() - 1000 * 60 * 60 * 24)).getDate(); //获取当月最后一天日期
         }
 
-        function createUL() {
-            CreateDateUI();
-            $("#yearwrapper ul").html(createYEAR_UL());
-            $("#monthwrapper ul").html(createMONTH_UL());
-            $("#daywrapper ul").html(createDAY_UL());
+
+
+        function createPlatform()
+        {
+
+            var str = '' +
+                '<div id="dateshadow"></div>' +
+                '<div id="datePage" class="page">' +
+                '<section>' +
+                '<div id="datetitle"><h1>请选择日期</h1></div>' +
+                '<div id="datemark"><a id="markyear"></a><a id="markmonth"></a><a id="markday"></a></div>' +
+                '<div id="timemark"><a id="markhour"></a><a id="markminut"></a><a id="marksecond"></a></div>' +
+                '<div id="datescroll">' +
+                '<div id="yearwrapper">' +
+                '<ul></ul>' +
+                '</div>' +
+                '<div id="monthwrapper">' +
+                '<ul></ul>' +
+                '</div>' +
+                '<div id="daywrapper">' +
+                '<ul></ul>' +
+                '</div>' +
+                '</div>' +
+                '<div id="datescroll_datetime">' +
+                '<div id="Hourwrapper">' +
+                '<ul></ul>' +
+                '</div>' +
+                '<div id="Minutewrapper">' +
+                '<ul></ul>' +
+                '</div>' +
+                '<div id="Secondwrapper">' +
+                '<ul></ul>' +
+                '</div>' +
+                '</div>' +
+                '</section>' +
+                '<footer id="dateFooter">' +
+                '<div id="setcancle">' +
+                '<ul>' +
+                '<li id="dateconfirm">确定</li>' +
+                '<li id="datecancle">取消</li>' +
+                '</ul>' +
+                '</div>' +
+                '</footer>' +
+                '</div>';
+            $("#datePlugin").html(str);
+
         }
+
 
         function CreateDateUI() {
             var str = '' +

@@ -6,9 +6,14 @@
 <meta name="format-detection" content="email=no">
 <title>jQuery手机移动端日历日期选择 - 微前端</title>
 <link href="http://s2.qhimg.com/static/68cdd376e08a5732/common.css" rel="stylesheet" type="text/css" />
+
 <script type="text/javascript" src="http://s1.qhimg.com/static/1c44f7af3eca2a0d/jquery-1.9.1.js" ></script>
-<script type="text/javascript" src="http://s4.qhimg.com/static/6d7c6ed9928c919f/date.js" ></script>
-<script type="text/javascript" src="http://s2.qhimg.com/static/8825ee466f0bc5ad/iscroll.js" ></script>
+    <script type="text/javascript" src="http://s2.qhimg.com/static/8825ee466f0bc5ad/iscroll.js" ></script>
+<!--<script type="text/javascript" src="http://s4.qhimg.com/static/6d7c6ed9928c919f/date.js" ></script>-->
+
+    <script type="text/javascript" src="./js/Sdate.js" ></script>
+
+
 
 
 
@@ -22,6 +27,11 @@
 
 <script type="text/javascript">
 $(function(){
+
+
+
+
+
 	$('#beginTime').date();
 	$('#endTime').date({theme:"datetime"});
 });
@@ -36,6 +46,7 @@ $(function(){
 	<div class="lie">日期设置-1:<input  id="beginTime" class="kbtn" /></div>
 	<div class="lie">日期设置-2:<input id="endTime" class="kbtn" /></div>
 </div>
+
 <div id="datePlugin"></div>
 
 </body>
