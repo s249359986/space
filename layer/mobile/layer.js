@@ -42,14 +42,33 @@ ready.touch = function(elem, fn){
       fn.call(this, e);
     }, false);
   }
-  elem.addEventListener('touchmove', function(){
-    move = true;
-  }, false);
-  elem.addEventListener('touchend', function(e){
-    e.preventDefault();
-    move || fn.call(this, e);
-    move = false;
-  }, false); 
+//  elem.addEventListener('touchmove', function(){
+//    move = true;
+//  }, false);
+//  elem.addEventListener('touchend', function(e){
+//    e.preventDefault();
+//    move || fn.call(this, e);
+//    move = false;
+//  }, false);
+
+
+    if(elem.addEventListener)
+    {
+        return elem.addEventListener('click', function(e){
+            console.log("3");
+            fn.call(this, e);
+        }, false);
+    }
+    if(elem.attachEvent)
+    {
+        return elem.attachEvent('onclick', function(e){
+            console.log("3");
+            fn.call(this, e);
+        }, false);
+    }
+
+
+
 };
 
 var index = 0, classs = ['layermbox'], Layer = function(options){
