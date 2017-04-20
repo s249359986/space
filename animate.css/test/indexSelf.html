@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+    #demo {
+      animation-name: rotate1;
+      animation-duration: 5s;
+      animation-timing-function: linear;
+      background-color: red;
+      height: 300px;
+      width: 300px;
+    }
+
+    @keyframes animation1{
+      0% {transform: translate(0); }
+      20% {transform: translate(120px); }
+      40% {transform: translate(240px); }
+      60% {transform: translate(240px, 40px); }
+      80% {transform: translate(240px, 80px); }
+      100% {transform: translate(240px, 120px); }
+    }
+
+
+    @keyframes rotate1{
+      0% {transform: rotate(0deg); }
+      100% {transform: rotate(360deg); }
+    }
+
+  </style>
+</head>
+<body>
+<div id="demo"></div>
+</body>
+</html>
