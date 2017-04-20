@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function domReady() {
+        return new Promise(function(resolve, reject) {
+            resolve();
+//            if(document.readyState === 'complete') {
+//                resolve();
+//            } else {
+//                document.addEventListener('DOMContentLoaded',resolve);
+//            }
+        })
+    }
+
+
+    domReady().then(function (data) {
+        console.log("done");
+    }).catch(function (error) {
+        console.log("catch");
+    });
+
+</script>
+</body>
+</html>

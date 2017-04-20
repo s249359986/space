@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="http://s1.qhimg.com/static/1c44f7af3eca2a0d/jquery-1.9.1.js" ></script>
+
+    <script type="text/javascript" src="./js/preLoad.js" ></script>
+    <style>
+        img
+        {
+            display: inline-block;
+            margin:20px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<!--<img src="https://p.ssl.qhimg.com/t01602eec07437b9068.png" style="display: none;">-->
+
+<!--<img src="https://p.ssl.qhimg.com/t01602eec07437b9068.png" style="display: none;">-->
+
+<div id="wrap"></div>
+<script>
+    var startTime=new Date().getTime();
+    console.log("开始"+startTime);
+    preLoad.load({
+        items:["./img/04-2.png","./img/1.png","./img/2.png","./img/3.png","./img/4.png","./img/gq1.jpg","./img/gq.jpg","https://p.ssl.qhimg.com/t01602eec07437b9068.png","https://p.ssl.qhimg.com/t01602eec07437b9068.png"],
+        done:function (data) {
+            for(var i=0;i<data.length;i++)
+            {
+                $("#wrap").append('<img src="'+data[i].src+'">');
+            }
+            console.log("done");
+        },
+        error:function (data) {
+            console.log("error");
+        },
+        progress:function (curItem,totalItem) {
+            console.log( parseInt(100*curItem/totalItem)+"%");
+        }
+    });
+</script>
+
+</body>
+</html>

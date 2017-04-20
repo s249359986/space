@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="https://s.ssl.qhimg.com/static/1c44f7af3eca2a0d/jquery-1.9.1.js" ></script>
+    <script type="text/javascript" src="../js/promise2.0.js" ></script>
+</head>
+<body>
+<script>
+  var promise=new Promise(function(resolve, reject) {
+        setTimeout(function () {
+            reject(42);
+        },2000);
+    });
+  promise.then(function(value) {
+debugger;
+      return value;
+            },function (value) {
+      debugger;
+  });
+
+</script>
+</body>
+</html>

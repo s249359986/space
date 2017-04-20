@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="http://s1.qhimg.com/static/1c44f7af3eca2a0d/jquery-1.9.1.js" ></script>
+
+    <script type="text/javascript" src="./js/preLoad.js" ></script>
+    <style>
+        img
+        {
+            display: inline-block;
+            margin:20px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<!--<img src="https://p.ssl.qhimg.com/t01602eec07437b9068.png" style="display: none;">-->
+
+<!--<img src="https://p.ssl.qhimg.com/t01602eec07437b9068.png" style="display: none;">-->
+
+<div id="wrap"></div>
+<script>
+
+//    function preloadimages(arr){
+//        var newimages=[], loadedimages=0;
+//        var postaction=function(){};  //此处增加了一个postaction函数
+//        var arr=(typeof arr!="object")? [arr] : arr;
+//        function imageloadpost(){
+//            loadedimages++;
+//            if (loadedimages==arr.length){
+//                postaction(newimages); //加载完成用我们调用postaction函数并将newimages数组做为参数传递进去
+//            }
+//        }
+//        for (var i=0; i<arr.length; i++){
+//            newimages[i]=new Image();
+//            newimages[i].src=arr[i];
+//            console.log("wrap"+i);
+//            (function (b) {
+//            newimages[b].onload=function(){
+//                    console.log("onload"+b);
+//                    imageloadpost();
+//            }
+//            newimages[b].onerror=function(){
+//                //    console.log("onload"+b);
+//                    imageloadpost();
+//            }
+//            })(i);
+//        }
+//        return { //此处返回一个空白对象的done方法
+//            done:function(f){
+//                postaction=f || postaction
+//            }
+//        }
+//    }
+
+    var startTime=new Date().getTime();
+    console.log("开始"+startTime);
+
+   // preloadimages(["./img/04-2.png","./img/1.png","./img/2.png","./img/3.png","./img/4.png","./img/gq1.jpg","./img/gq.jpg"]).done(function (data) {
+
+var preLoad=new PreLoad();
+
+preLoad.load(["./img/04-2.png","./img/1.png","./img/2.png","./img/3.png","./img/4.png","./img/gq1.jpg","./img/gq.jpg"]).done(function (data) {
+    var endTime=new Date().getTime();
+        console.log("结束"+endTime);
+        console.log("时差"+(endTime-startTime));
+for(var i=0;i<data.length;i++)
+{
+    $("#wrap").append('<img src="'+data[i].src+'">');
+}
+    });
+</script>
+
+</body>
+</html>

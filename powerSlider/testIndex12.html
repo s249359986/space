@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文字多行滚动-jQuery全能滚动插件：power-slider演示-前端博客</title>
+    <link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="icon">
+    <link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="reset.css"/>
+    <meta name="keywords" content="前端博客,代码演示"/>
+    <meta name="description" content="前端博客代码演示，caibaojian.com，前端代码范例，演示代码"/>
+    <style type="text/css">
+        body {
+            text-align: left;
+            width: 696px;
+            margin: 0 auto;
+        }
+        .demolist li {
+            display: inline-block;
+            font-size: 14px;
+            border: 1px solid #eee;
+            padding: 10px;
+            margin-right: 10px;
+            *display: inline;
+            *zoom: 1;
+            word-spacing: normal;
+            letter-spacing: normal;
+            vertical-align: top;
+        }
+
+        .menu ul {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        .menu ul li {
+            float: left;
+            margin-right: 10px;
+            padding: 2px 6px;
+        }
+
+        .menu ul li.active {
+            background: #fff;
+        }
+
+        .menu ul li a {
+            line-height: 32px;
+            padding: 0 4px;
+        }
+
+
+        .code h3 span {
+            border: 1px solid #ddd;
+            margin-left: -1px;
+            padding: 10px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        pre {
+            background: #eee;
+            padding: 10px;
+        }
+
+        .sliderbox {
+            position: relative;
+        }
+
+        /*必须加这句css,否则向左右，上下滚动时会没有效果*/
+        .content {
+            margin: 20px auto;
+            width: 200px;
+        }
+
+        .text {
+            height: 150px;
+            width: 200px;
+            overflow: hidden;
+            position: relative;
+            margin: 0px auto;
+        }
+
+        .text li {
+            line-height: 30px;
+            height: 30px;
+            width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="content">
+        <h3>第一种：默认上下滚动</h3>
+        <div class="text" id="text">
+            <ul class="sliderbox">
+                <li><a href="">测试文字1滚动Lorem ipsum dolor sit1.</a></li>
+                <li><a href="">测试文字2滚动Lorem ipsum dolor sit2.</a></li>
+                <li><a href="">测试文字3滚动Lorem ipsum dolor sit3.</a></li>
+                <li><a href="">测试文字4滚动Lorem ipsum dolor sit4.</a></li>
+                <li><a href="">测试文字5滚动Lorem ipsum dolor sit5.</a></li>
+                <li><a href="">测试文字6滚动Lorem ipsum dolor sit1.</a></li>
+                <li><a href="">测试文字7滚动Lorem ipsum dolor sit2.</a></li>
+                <li><a href="">测试文字8滚动Lorem ipsum dolor sit3.</a></li>
+                <li><a href="">测试文字9滚动Lorem ipsum dolor sit4.</a></li>
+                <li><a href="">测试文字10滚动Lorem ipsum dolor sit5.</a></li>
+                <li><a href="">测试文字11滚动Lorem ipsum dolor sit1.</a></li>
+                <li><a href="">测试文字12滚动Lorem ipsum dolor sit2.</a></li>
+                <li><a href="">测试文字13滚动Lorem ipsum dolor sit3.</a></li>
+                <li><a href="">测试文字14滚动Lorem ipsum dolor sit4.</a></li>
+                <li><a href="">测试文字15滚动Lorem ipsum dolor sit4.</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="images/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="power-slider.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#text").powerSlider({delayTime: 1000, sliderNum: 5});
+    });
+</script>
+<!--<script type="text/javascript" src="http://tajs.qq.com/stats?sId=15910806" charset="UTF-8"></script>-->
+</body>
+</html>

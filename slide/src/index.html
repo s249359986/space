@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="//cdn.bootcss.com/jquery/2.0.0/jquery.js"></script>
+    <script type="text/javascript" src="./js/slide.0.01.js" ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+
+        .btn
+        {
+
+            position: absolute;
+            background-color: yellow;padding: 5px;height: 10px;width: 10px;
+        }
+        .content
+        {
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border: 1px red solid;
+        }
+
+
+
+    </style>
+</head>
+<body>
+实例1
+<div id="btn0" class="btn"></div>
+
+<div id="btn1" class="btn"></div>
+
+<div id="wrapId" style="width: 300px;height: 300px;border: 1px red solid;">
+
+</div>
+
+
+
+
+<div id="wrapId1" style="width: 300px;height: 300px;border: 1px red solid;">
+
+</div>
+
+<div id="clickId">点我</div>
+
+
+<script>
+    var myOpt={
+        handle:{
+            slideBegin:function (wrapObj,position) {
+                $("#btn0").css({left:position.x+"px",top:position.y+"px"});
+            },
+            slideEnd:function (wrapObj,position) {
+                $("#btn0").css({left:position.x+"px",top:position.y+"px"});
+            },
+            sliding:function (wrapObj,position) {
+                $("#btn0").css({left:position.x+"px",top:position.y+"px"});
+            }
+        },
+        debug:false
+    };
+    var myOpt1={
+        handle:{
+            slideBegin:function (wrapObj,position) {
+                $("#btn1").css({left:position.x+"px",top:position.y+"px"});
+            },
+            slideEnd:function (wrapObj,position) {
+                $("#btn1").css({left:position.x+"px",top:position.y+"px"});
+            },
+            sliding:function (wrapObj,position) {
+                $("#btn1").css({left:position.x+"px",top:position.y+"px"});
+            }
+        },
+        debug:false
+    };
+    var assetsSelectApi=$('#wrapId').slide(myOpt);
+
+    var assetsSelectApi1=$('#wrapId1').slide(myOpt1);
+    $("#clickId").click(function () {
+
+        console.dir(assetsSelectApi.data("api").getPosition());
+    })
+
+</script>
+
+</body>
+</html>

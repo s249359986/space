@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="./css/swipe.css">
+<style>
+
+    .testA
+    {
+        width: 360px;
+        left: 0px;
+        float: left;
+        position: relative;
+        transition-duration: 600ms;
+        /*transform: translate(-360px, 0px) translateZ(0px);*/
+    }
+
+</style>
+
+
+
+
+</head>
+<body>
+<div class="addWrap">
+    <div class="swipe" id="mySwipe" style="visibility: visible;">
+        <div class="swipe-wrap" style="width: 1080px;">
+            <div  class="testA" style="width: 360px"><a href="javascript:;"><img onclick="toPage('http://www.mysoccer.cn')" class="img-responsive" src="http://p9.qhimg.com/t019cf9b76139051443.png"></a></div>
+            <div class="testA" style="left: -720px;width: 360px;"><a href="javascript:;"><img onclick="toPage('http://www.toutiaozuqiu.com/html/360weishi/index.html?from=singlemessage&isappinstalled=0')" class="img-responsive" src="http://p2.qhimg.com/t01c5316a6f2b00eb9d.png"></a></div>
+            <div class="testA" style="left: -1080px;width: 360px;"><a href="javascript:;"><img onclick="toPage('http://m.benlai.com/zt/bd0607jbl')" class="img-responsive" src="http://p9.qhimg.com/t012f2a326c04b0118d.jpg"></a></div>
+        </div>
+    </div>
+    <ul id="position">
+        <li class="cur"></li>
+        <li class=" "></li>
+        <li class=" "></li>
+        <li class=" "></li>
+        <li class=" "></li>
+        <li class=" "></li>
+    </ul>
+</div>
+
+<script>
+    var container=document.getElementById("mySwipe");
+    var element = container.children[0];
+    var slides = element.children;
+    function translate(index, dist, speed) {
+
+        var slide = slides[index];
+        var style = slide && slide.style;
+
+        if (!style) return;
+
+        style.webkitTransitionDuration =
+                style.MozTransitionDuration =
+                        style.msTransitionDuration =
+                                style.OTransitionDuration =
+                                        style.transitionDuration = speed + 'ms';
+
+        style.webkitTransform = 'translate(' + dist + 'px,0)' + 'translateZ(0)';
+        style.msTransform =
+                style.MozTransform =
+                        style.OTransform = 'translateX(' + dist + 'px)';
+
+    }
+    var step=0;
+    setInterval(function () {
+        step+=20;
+        translate(1,step,600);
+    },1000)
+
+
+
+
+</script>
+</body>
+</html>

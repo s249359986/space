@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/sStack.js"></script>
+</head>
+<body>
+<script>
+/*
+* 实例1--进制转换
+*
+* */
+    var sl=new Stack();
+    sl.push("s0");
+    sl.push("s1");
+    sl.push("s2");
+    console.log(sl.peek());
+    console.log(sl.pop());
+    console.log(sl.pop());
+    sl.clear();
+    console.log(sl.pop());
+    var s2=new Stack();
+    function jto(n,b) {
+        var temp1=n % b;
+        if(n==0&&temp1==0)
+        {
+            return s2;
+        }
+        else
+        {
+            s2.push(temp1);
+           return jto(Math.floor(n/b),b);
+        }
+    }
+    var tempArray=jto(1000,2);
+    var tempNum='';
+    var tempLength=tempArray.length();
+    for(var i=0;i<tempLength;i++)
+    {
+        tempNum+=""+tempArray.pop();
+    }
+    console.log(tempNum);
+
+/*
+ * 实例2--回文
+ *
+ * */
+
+/*
+ * 实例3--模拟递归
+ *
+ * */
+
+    function fact(n) {
+        var s=new Stack();
+        while (n>1)
+        {
+            s.push(n--);
+        }
+        var product=1;
+        while (s.length()>0)
+        {
+            product*=s.pop();
+        }
+        return product;
+    }
+</script>
+</body>
+</html>

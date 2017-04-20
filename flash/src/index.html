@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抖动输入框</title>
+    <script type="text/javascript" src="http://s1.qhimg.com/static/1c44f7af3eca2a0d/jquery-1.9.1.js" ></script>
+    <script type="text/javascript" src="./js/flash.js"></script>
+</head>
+<body>
+<input type="text" id="exp" value="测试"/>
+
+<input type="text" class="exps" value="测试1"/>
+<input type="text" class="exps" value="测试2"/>
+<input type="text" class="exps" value="测试3"/>
+
+<script>
+    flash('#exp',8,10,100);
+$(".exps").on("focus",function () {
+    flash(this,8,10,100);
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+
+<input id="say" type="input">
+
+<script type="text/javascript" src="./js/promise.js"></script>
+
+<script type="text/javascript">
+
+//    Promise.resolve('test').then(function(val){
+//        console.log(val);
+//        console.log("11111");
+//        return val + val;
+//    }).then(function(val){
+//        console.log("22222");
+//        console.log(val);
+//    });
+
+    new Promise(function(resolve,reject){
+//        setTimeout(function(){
+//            resolve('ok')
+//        },500);
+        setTimeout(function(){
+            reject('error')
+        },3000)
+    }).then(function(msg){
+        console.log(msg)
+    }).catch(function(err){
+        console.log(err)
+    })
+
+</script>
+</body>
+</html>

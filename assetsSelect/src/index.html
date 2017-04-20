@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="//cdn.bootcss.com/jquery/2.0.0/jquery.js"></script>
+    <script type="text/javascript" src="./js/assetsSelect.js" ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+
+        .btn
+        {
+            float: left;
+            background-color: yellow;padding: 5px;height: 30px;width: 100px;border-radius: 5px;line-height: 30px;text-align: center;
+        }
+        .content
+        {
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border: 1px red solid;
+        }
+        .content1
+        {
+
+            width: 10px;
+            height: 10px;
+            padding: 10px;
+            border: 1px green solid;
+        }
+        .assetsSelect_on
+        {
+            background-color: blue;
+        }
+        .assetsSelect_on1
+        {
+            background-color: gold;
+        }
+        .assetsSelect_on2
+        {
+            background-color: gray;
+        }
+
+    </style>
+</head>
+<body>
+实例1
+<div id="wrapId">
+    <div class="content"><div class="content1"></div></div>
+    <div class="content"><div class="content1"></div></div>
+    <div class="content"><div class="content1"></div></div>
+    <span id="selectAll1" class="btn" >选择所有</span>
+
+    <span id="remove1" class="btn" style="margin-top: 30px;">去掉选中所有</span>
+
+    <span id="getSelect" class="btn" style="margin-top: 30px;">获得所有选中</span>
+</div>
+
+
+<!--实例2-->
+<!--<div id="wrapId1">-->
+    <!--<div class="content"><div class="content1"></div></div>-->
+    <!--<div class="content"><div class="content1"></div></div>-->
+    <!--<div class="content"><div class="content1"></div></div>-->
+
+    <!--<span id="selectAll2" class="btn" >选择所有</span>-->
+
+    <!--<span id="remove2" class="btn" style="margin-top: 30px;">去掉选中所有</span>-->
+
+<!--</div>-->
+
+
+<!--实例3-->
+
+<!--<div class="wrapClazz">-->
+    <!--<div class="content"><div class="content1"></div></div>-->
+    <!--<div class="content"><div class="content1"></div></div>-->
+    <!--<div class="content"><div class="content1"></div></div>-->
+<!--</div>-->
+
+<!--<div class="wrapClazz">-->
+    <!--<div class="content"></div>-->
+    <!--<div class="content"></div>-->
+    <!--<div class="content"></div>-->
+<!--</div>-->
+
+
+
+
+<script>
+    var assetsSelectApi=$('#wrapId').assetsSelect({styleObj:{
+        on:"assetsSelect_on1"
+    },
+        handle:{
+            selectedAfter:function (data1,data2,data3) {
+                data2.text("我");
+                console.log("选中");
+            },
+            unselectedAfter:function (data1,data2,data3) {
+                console.log("未选中");
+                data2.text("");
+            },
+            selectedAllAfter:function (data1,data2,data3) {
+                alert("all");
+            },
+            unselectedAllAfter:function (data1,data2,data3) {
+                alert("unall");
+            }
+        },
+        select:".content"
+    });
+
+//
+//    var assetsSelectApi1=$('#wrapId1').assetsSelect({styleObj:{
+//        on:"assetsSelect_on"
+//    },
+//        select:".content"
+//    });
+//
+//    $('.wrapClazz').assetsSelect({styleObj:{
+//        on:"assetsSelect_on2"
+//    },
+//        select:".content"
+//    });
+
+
+
+    function selectAll() {
+        assetsSelectApi.data("api").selectAll();//unselectAll
+    }
+    function unselectAll() {
+        assetsSelectApi.data("api").unselectAll();//unselectAll
+    }
+    function getSelectAll() {
+        var aaa=assetsSelectApi.data("api").getAllSelect();//unselectAll
+   console.dir(aaa);
+    }
+
+//    function selectAll1() {
+//        assetsSelectApi1.data("api").selectAll();//unselectAll
+//    }
+//    function unselectAll1() {
+//        assetsSelectApi1.data("api").unselectAll();//unselectAll
+//    }
+
+    $("#selectAll1").click(selectAll);
+    $("#remove1").click(unselectAll);
+    $("#getSelect").click(getSelectAll);//getSelect
+//
+//
+//    $("#selectAll2").click(selectAll1);
+//    $("#remove2").click(unselectAll1);
+
+</script>
+
+
+
+
+
+</body>
+</html>

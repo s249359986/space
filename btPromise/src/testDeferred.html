@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="https://s.ssl.qhimg.com/static/1c44f7af3eca2a0d/jquery-1.9.1.js" ></script>
+</head>
+<body>
+<script>
+
+
+    var promptDeferred=new $.Deferred();
+    var tempPromise=promptDeferred.promise();
+//    promptDeferred.resolve();
+//    promptDeferred.done(function () {
+//        console.log("promptDeferredDone");
+//    });
+//    promptDeferred.fail(function () {
+//        console.log("promptDeferredFail");
+//    });
+//    promptDeferred.always(function () {
+//        console.log("promptDeferredAlways");
+//    });
+
+
+  //  tempPromise.resolve();
+    tempPromise.done(function () {
+        console.log("promptDeferredDone");
+    });
+    tempPromise.fail(function () {
+        console.log("promptDeferredFail");
+    });
+    tempPromise.always(function () {
+        console.log("promptDeferredAlways");
+    });
+
+</script>
+</body>
+</html>

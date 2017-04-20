@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="http://s1.qhimg.com/static/1c44f7af3eca2a0d/jquery-1.9.1.js" ></script>
+    <script src="../js/jqueryRotate.js" type="text/javascript" charset="utf-8" ></script>
+    <style>
+        #testImg
+        {
+            padding-top: 0px;
+            padding-bottom: 125px;
+        }
+    </style>
+</head>
+<body>
+<img id="testImg" src="http://p3.qhimg.com/t013de5169052cbb3a6.png">
+<script>
+    var rotation = function (){
+        $("#testImg").rotate({
+            angle:0,
+            animateTo:360,
+            callback: rotation
+        });
+    }
+    rotation();
+</script>
+</body>
+</html>

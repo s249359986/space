@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/sList.js"></script>
+</head>
+<body>
+<script>
+
+    var sl=new List();
+    sl.append("s1");
+    sl.append("s2");
+    sl.append("s3");
+    var s2=new List();
+    s2.append({"key":1});
+    s2.append({"key":1});
+    s2.append({"key":1});
+    console.log(s2.toString());
+    s2.append({"key":2});
+    console.log(s2.toString());
+
+    console.log(s2.contains({"key":2}));
+   // s2.remove({"key":2});
+  //  var aaa=s2.getElement();
+
+</script>
+</body>
+</html>

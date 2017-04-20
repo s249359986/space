@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>网格布局</title>
+    <style>
+        body, dl, dd, h1, h2, h3, h4, h5, h6, p, form {margin:0;}
+        ul,ol {margin:0; padding:0;}
+        table, td, th { border-collapse:collapse; }
+        /*ol,ul, li { list-style:none;}*/
+        /*li{float: left;}*/
+        h1, h2, h3, h4 { font-size:100%; }
+
+
+        header,
+        footer {
+            background-color: #4d4e53;
+        }
+        .HolyGrail-content {
+            background-color: #999999;
+        }
+        .HolyGrail-nav{
+            /* 两个边栏的宽度设为12em */
+          background-color: #0066cc;
+        }
+        .HolyGrail-ads {
+            /* 两个边栏的宽度设为12em */
+           background-color: #CC6633;
+        }
+
+
+        .HolyGrail {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        header,
+        footer {
+            flex: 0 0 100px;
+        }
+
+        .HolyGrail-body {
+            display: flex;
+            flex: 1;
+        }
+
+        .HolyGrail-content {
+            flex: 1;
+        }
+
+        .HolyGrail-nav, .HolyGrail-ads {
+            /* 两个边栏的宽度设为12em */
+            flex: 0 0 12em;
+        }
+
+        .HolyGrail-nav {
+            /* 导航放到最左边 */
+            order: -1;
+        }
+
+        @media (max-width: 768px) {
+            .HolyGrail-body {
+                flex-direction: column;
+                flex: 1;
+            }
+            .HolyGrail-nav,
+            .HolyGrail-ads,
+            .HolyGrail-content {
+                flex: auto;
+            }
+        }
+    </style>
+
+</head>
+<body class="HolyGrail">
+<header>header</header>
+<div class="HolyGrail-body">
+    <main class="HolyGrail-content">HolyGrail-content</main>
+    <nav class="HolyGrail-nav">HolyGrail-nav</nav>
+    <aside class="HolyGrail-ads">HolyGrail-ads</aside>
+</div>
+<footer>footer</footer>
+</body>
+</html>

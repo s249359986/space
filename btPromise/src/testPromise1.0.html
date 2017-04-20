@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="./js/promise1.0.js"></script>
+
+</head>
+<body>
+<script>
+
+    var delay = function (throwError) {
+        var promise = new Promise();
+
+        if (throwError) {
+         //   promise.reject(new Error("ERROR"));
+            promise.resolve("jiejue");
+            return promise;
+        }
+
+        setTimeout(function () {
+            promise.resolve("some data");
+        }, 1000);
+
+        return promise;
+    }
+
+//    delay().then(function (result) {
+//        console.log(result);
+//    }).then(function () {
+//        console.log("This is the second successHandler");
+//    }).then(function () {
+//        console.log("This is the third successHandler");
+//    });
+
+
+
+//    delay(true).then(function (result) {
+//        console.log(result);
+//    }, function firstErrorHandler(error) {
+//        console.error("First failedHandler catch: ", error);
+//
+//        var promise = new Promise();
+//        promise.resolve("some data");
+//        return promise;
+//
+//    }).then(function secondSucHandler(result) {
+//        console.log("Second successHandler recevied: ", result);
+//    }, function (error) {
+//        console.error("Second failedHandler catch: ", error);
+//    })
+
+
+    delay(true)
+    // ------Level 1------
+            .then(function FirstSucHandler(result) {
+
+                console.log("First successHandler recevied: ", result);
+                var p = new Promise();
+                setTimeout(function () {
+                    p.reject(new Error("This is a test"));
+                },2000);
+
+                return p;
+            }, function FirstErrorHandler(error) {
+                console.error("First failedHandler catch: ", error);
+            })
+            // ------Level 2------
+            .then(function SecondSucHandler(result) {
+                console.log("Second successHandler recevied: ", result);
+            },function secondErrorHandler(result) {
+                console.error("Second ErrorHandler recevied: ", result);
+
+            })
+            // ------Level 3------
+            .then(function ThirdSucHandler(result) {
+                console.log("Third successHandler recevied: ", result);
+            }, function ThirdErrorHandler(error) {
+                console.error("Third failedHandler catch: ", error);
+            })
+            // ------Level 4------
+            .then(function FourSucHandler(result) {
+                console.log("Fourth successHandler recevied: ", result);
+            })
+
+
+</script>
+</body>
+</html>

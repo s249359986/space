@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/sQueue.js"></script>
+</head>
+<body>
+<script>
+    /*
+     * 实例1--测试
+     *
+     * */
+    var q=new Queue();
+    q.enqueue("q1");
+    q.enqueue("q2");
+    q.enqueue("q3");
+    document.write(q.toString());
+    /*
+     * 实例2--排序
+     *
+     * */
+    function que(arr,w) {//w=0个位，w=1十位
+        var ques=[];
+        for(var k=0;k<10;k++)
+        {
+            ques[k]=new Queue();
+        }
+        for(var i=0;i<arr.length;i++)
+        {
+            ques[Number(arr[i][w])].enqueue(arr[i]);//对十位
+        }
+        return ques;
+    }
+    var tempQue=que(["12","31","33","84","29","14","53"],0);
+    for(var m=0;m<tempQue.length;m++)
+    {
+        document.write(tempQue[m].toString());
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+html{font-size: 10px;width: 100%;height: 100%;}
+a{text-decoration: none;}
+@media screen and (min-width:800px){html{font-size: 25px;}}
+@media screen and (max-width:720px){html{font-size: 22px;}}
+@media screen and (max-width:640px){html{font-size: 20px;}}
+@media screen and (max-width:480px){html{font-size: 15px;}}
+@media screen and (max-width:400px){html{font-size: 12px;}}
+@media screen and (max-width:320px){html{font-size: 10px;}}
+img{
+	max-width: 100%;
+}
+body{background: url(https://p.ssl.qhimg.com/t0197905c14e4fa2a36.png) 0 0 repeat;background-size: 100% 100%;padding: 0;margin: 0;font-family: ""\5fae\8f6f\96c5\9ed1",Verdana,SimHei,"Microsoft JhengHei",Tahoma";}
+.turnplate-outer{display:block;padding:0% 2.5%;margin-left:auto;margin-right:auto;text-align:right;}
+.turnplate-outer .turnplate{display:block;width:100%;position:relative;background:url('https://p.ssl.qhimg.com/t01c8ac8f3c68adbae1.png') no-repeat;margin-top:-30px;background-size:100% auto;}
+.turnplate canvas.item{width:100%;}
+.turnplate .pointer{position:absolute;width:24.5%;left:37.6%;top:20%;height:41%;background:url('https://p.ssl.qhimg.com/t013de5169052cbb3a6.png') center center no-repeat;background-size:100% 100%;}
+.head{width:100%;}
+@media screen and (max-height:480px){.head{margin-top:-18px;}}
+.layer{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.6);
+	z-index: 99;
+	text-align: center;
+	display: none;
+}
+.pkg{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 76.8%;
+	height: 57.3%;
+	background:url(https://p.ssl.qhimg.com/t01f9e4bdf26ef4a76e.png) center center no-repeat;
+	background-size: contain;
+}
+.pkg b{
+	position: absolute;
+	top:20%;
+	left: 40%;
+	color: #fa5710;
+	font-size: 44px;
+}
+.pkg p{
+	position: absolute;
+	bottom:26%;
+	width: 100%;
+	color: #ffe5a8;
+	text-align: center;
+	font-size: 1.7rem;
+}
+.getBt{
+    display: inline-block;
+    position: absolute;
+    width: 38%;
+    background-color: #ffeed8;
+    border-radius: 8px;
+    color: #fa5710;
+    bottom: 10%;
+    left: 31%;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 2.6;
+}
+.dialog.public-dialog{
+	display: none;
+}

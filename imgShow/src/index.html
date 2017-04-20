@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="http://s1.qhimg.com/static/1c44f7af3eca2a0d/jquery-1.9.1.js" ></script>
+    <style>
+        .imgs
+        {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+    </style>
+</head>
+<body>
+<div style="position: relative;width: 100%;height: 500px;">
+    <img class="imgs" style="z-index: 4;"  id="img1" src="./img/1.png">
+    <img class="imgs" style="z-index: 3;" id="img2" src="./img/2.png">
+    <img class="imgs" style="z-index: 2;" id="img3" src="./img/3.png">
+    <img class="imgs" style="z-index: 1;" id="img4" src="./img/4.png">
+</div>
+<script>
+$("#img1").fadeOut("slow",function () {
+    $("#img2").fadeOut("slow",function () {
+        $("#img3").fadeOut("slow",function () {
+     //       $("#img4").fadeOut("slow");
+        });
+    });
+});
+
+
+
+
+</script>
+</body>
+</html>

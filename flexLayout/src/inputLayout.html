@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>网格布局</title>
+    <style>
+        body, dl, dd, h1, h2, h3, h4, h5, h6, p, form {margin:0;}
+        ul,ol {margin:0; padding:0;}
+        table, td, th { border-collapse:collapse; }
+        /*ol,ul, li { list-style:none;}*/
+        /*li{float: left;}*/
+        h1, h2, h3, h4 { font-size:100%; }
+
+
+        .InputAddOn {
+            display: flex;
+        }
+        .InputAddOn-item
+        {
+
+        }
+
+        .InputAddOn-field {
+            flex: 1;
+        }
+    </style>
+
+</head>
+<body>
+实例1
+<div class="InputAddOn">
+    <span class="InputAddOn-item">名字</span>
+    <input class="InputAddOn-field">
+    <button class="InputAddOn-item">发送</button>
+</div>
+
+
+实例2
+<div class="InputAddOn">
+    <span class="InputAddOn-item">名字</span>
+    <input class="InputAddOn-field">
+
+</div>
+
+实例3
+<div class="InputAddOn">
+
+    <input class="InputAddOn-field">
+    <button class="InputAddOn-item">发送</button>
+</div>
+
+</body>
+</html>

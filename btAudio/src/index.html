@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//cdn.bootcss.com/jquery/2.0.0/jquery.js"></script>
+    <script type="text/javascript" src="./js/btAudio.js" ></script>
+</head>
+<body>
+<div id="test"></div>
+<!--<div id="test1"></div>-->
+<!--<div class="test2"></div>-->
+
+<!--<div class="test2"></div>-->
+
+
+
+
+
+<div id="clickBtn">播放</div>
+<div id="clickBtn1">暂停</div>
+
+<script>
+
+
+var btObj=$("#test").btAudio({src:"https://s2.ssl.qhimg.com/static/580445bedaad1b44.mp3"});
+
+
+
+//var btObj=$("#test1").btAudio({src:"https://s2.ssl.qhimg.com/static/580445bedaad1b44.mp3"});
+//var btObj=$(".test2").btAudio({src:"https://s2.ssl.qhimg.com/static/580445bedaad1b44.mp3"});
+
+$("#clickBtn").click(function () {
+
+    btObj.data("api").play();
+  //  $(btObj1[1]).data("api").play();
+});
+$("#clickBtn1").click(function () {
+
+    btObj.data("api").pause();
+  //  $(btObj1[0]).data("api").pause();
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+.toast_wrapper
+{
+    position: fixed;
+    z-index: 999;
+    top:42%;
+    text-align: center;
+    width: 100%;
+    color: white;
+    display: none;
+}
+.toast_wrapper .content
+{
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+.shade
+{
+    background-color: rgba(1,1,1,0.5);
+    max-width: 320px;
+    width: 40%;
+    min-width: 140px;
+    margin: 0 auto;
+    border-radius: 5px;
+}

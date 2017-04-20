@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="http://s1.qhimg.com/static/1c44f7af3eca2a0d/jquery-1.9.1.js" ></script>
+    <script type="text/javascript" src=".js/jquery.cookie.js" ></script>
+</head>
+<body>
+<script>
+    $.cookie('name', 'value');
+    $.cookie('name', 'value', { expires: 7 });
+    $.cookie('name'); // => "value"
+    $.cookie('nothing'); // => undefined
+    $.cookie(); // => { "name": "value" }  read all value
+    $.removeCookie('name'); // => true
+    $.removeCookie('nothing'); // => false
+
+    // Need to use the same attributes (path, domain) as what the cookie was written with
+    $.cookie('name', 'value', { path: '/' });
+    // This won't work!
+    $.removeCookie('name'); // => false
+    // This will work!
+    $.removeCookie('name', { path: '/' }); // => true
+    $.cookie.raw = true;//设置raw为true不适用编码
+</script>
+</body>
+</html>

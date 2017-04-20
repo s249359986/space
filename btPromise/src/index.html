@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="https://s.ssl.qhimg.com/static/1c44f7af3eca2a0d/jquery-1.9.1.js" ></script>
+    <style>
+        .name
+        {
+            /*background-color: black;*/
+            padding: 0;margin: 0;
+            /*padding-top:6.5%;*/
+
+            position: absolute;
+            /*bottom: 84px;*/
+            top: 0px;
+            padding-top: 0px;
+            left: 0;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+<script>
+
+    var Promise = function () {}
+
+    Promise.prototype.when = function () {
+        // to do
+    }
+
+    Promise.prototype.resolve = function () {
+        // to do
+    }
+
+    Promise.prototype.rejected = function () {
+        // to do
+    }
+
+
+</script>
+<script>
+
+   var promise= $.ajax({
+        type:"get",
+        //  url: "./mock/newGame.json",
+        url:"./mock/ok.json",
+        //data:"",
+        dataType: 'json'
+    }).then(
+           function (data) {
+               console.log("then");
+               console.dir(data);
+               var d = $.Deferred();
+           $.ajax({
+                   type:"get",
+                   //  url: "./mock/newGame.json",
+                   url:"./mock/yes.json",
+                   //data:"",
+                   dataType: 'json'
+               }).done(function (data) {
+               try
+               {
+                   dfa
+               }
+               catch (e)
+               {
+                   console.dir(e);
+               }
+
+
+               d.reject(data);
+           });
+
+               return d.promise();
+           }
+   );
+
+
+promise.done(function (data) {
+    console.log("promise.done");
+    console.dir(data);
+});
+   promise.fail(function (data) {
+       console.log("promise.fail");
+       console.dir(data);
+   });
+   promise.always(function (data) {
+       console.log("promise.always");
+       console.dir(data);
+   });
+</script>
+</body>
+</html>

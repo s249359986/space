@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>网格布局</title>
+    <style>
+        body, dl, dd, h1, h2, h3, h4, h5, h6, p, form {margin:0;}
+        ul,ol {margin:0; padding:0;}
+        table, td, th { border-collapse:collapse; }
+        /*ol,ul, li { list-style:none;}*/
+        /*li{float: left;}*/
+        h1, h2, h3, h4 { font-size:100%; }
+        .Grid-cell
+        {
+            background-color: #999999;
+          /*margin: 10px;*/
+        }
+        .Grid {
+            display: box;              /* OLD - Android 4.4- */
+            display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+            display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+            display: -ms-flexbox;      /* TWEENER - IE 10 */
+            display: -webkit-flex;     /* NEW - Chrome */
+            display: flex;
+
+
+            /*flex-direction*/
+                    /*flex-wrap*/
+                    /*flex-flow*/
+                    /*justify-content*/
+                    /*align-items*/
+                    /*align-content*/
+        }
+
+        .Grid-cell {
+            -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 1;         /* OLD - Firefox 19- */
+            -webkit-flex: 1;          /* Chrome */
+            -ms-flex: 1;              /* IE 10 */
+            flex: 1;
+            /*order*/
+                    /*flex-grow*/
+                    /*flex-shrink*/
+                    /*flex-basis*/
+                    /*flex*/
+                    /*align-self*/
+        }
+
+        .Grid-cell.u-full {
+
+            -webkit-box-flex:0 0 100%;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 0 0 100%;         /* OLD - Firefox 19- */
+            -webkit-flex:0 0 100%;          /* Chrome */
+            -ms-flex: 0 0 100%;              /* IE 10 */
+            flex: 0 0 100%;
+        }
+
+        .Grid-cell.u-1of2 {
+
+
+            -webkit-box-flex:0 0 50%;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 0 0 50%;         /* OLD - Firefox 19- */
+            -webkit-flex:0 0 50%;          /* Chrome */
+            -ms-flex: 0 0 50%;              /* IE 10 */
+            flex: 0 0 50%;
+        }
+
+        .Grid-cell.u-1of3 {
+            -webkit-box-flex:0 0 33.3333%;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 0 0 33.3333%;         /* OLD - Firefox 19- */
+            -webkit-flex:0 0 33.3333%;          /* Chrome */
+            -ms-flex: 0 0 33.3333%;              /* IE 10 */
+            flex: 0 0 33.3333%;
+        }
+        .Grid-cell.u-1of4 {
+            -webkit-box-flex:0 0 25%;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 0 0 25%;         /* OLD - Firefox 19- */
+            -webkit-flex:0 0 25%;          /* Chrome */
+            -ms-flex: 0 0 25%;              /* IE 10 */
+            flex: 0 0 25%;
+        }
+        .Grid-cell.u-1of5 {
+            -webkit-box-flex:0 0 20%;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 0 0 20%;         /* OLD - Firefox 19- */
+            -webkit-flex:0 0 20%;          /* Chrome */
+            -ms-flex: 0 0 20%;              /* IE 10 */
+            flex: 0 0 20%;
+        }
+        .Grid-cell.u-1of6 {
+            -webkit-box-flex:0 0 16.66666%;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 0 0 16.66666%;         /* OLD - Firefox 19- */
+            -webkit-flex:0 0 16.66666%;          /* Chrome */
+            -ms-flex: 0 0 16.66666%;              /* IE 10 */
+            flex: 0 0 16.66666%;
+       }
+        .Grid-cell.u-1of7 {
+
+
+            -webkit-box-flex:0 0 14.2857%;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 0 0 14.2857%;         /* OLD - Firefox 19- */
+            -webkit-flex:0 0 14.2857%;          /* Chrome */
+            -ms-flex: 0 0 14.2857%;              /* IE 10 */
+            flex: 0 0 14.2857%;
+        }
+        .Grid-cell.u-1of8 {
+            -webkit-box-flex:0 0 12.5%;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 0 0 12.5%;         /* OLD - Firefox 19- */
+            -webkit-flex:0 0 12.5%;          /* Chrome */
+            -ms-flex: 0 0 12.5%;              /* IE 10 */
+            flex: 0 0 12.5%;
+        }
+        .Grid-cell.u-1of9 {
+            -webkit-box-flex:0 0 11.111111%;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 0 0 11.111111%;         /* OLD - Firefox 19- */
+            -webkit-flex:0 0 11.111111%;          /* Chrome */
+            -ms-flex: 0 0 11.111111%;              /* IE 10 */
+            flex: 0 0 11.111111%;
+        }
+        .Grid-cell.u-1of10 {
+            -webkit-box-flex:0 0 10%;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 0 0 10%;         /* OLD - Firefox 19- */
+            -webkit-flex:0 0 10%;          /* Chrome */
+            -ms-flex: 0 0 10%;              /* IE 10 */
+            flex: 0 0 10%;
+
+        }
+        .Grid-cell.u-1of11 {
+            -webkit-box-flex:0 0 9.090909%;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 0 0 9.090909%;         /* OLD - Firefox 19- */
+            -webkit-flex:0 0 9.090909%;          /* Chrome */
+            -ms-flex: 0 0 9.090909%;              /* IE 10 */
+            flex: 0 0 9.090909%;
+        }
+        .Grid-cell.u-1of12 {
+            -webkit-box-flex:0 0 8.3333%;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 0 0 8.3333%;         /* OLD - Firefox 19- */
+            -webkit-flex:0 0 8.3333%;          /* Chrome */
+            -ms-flex: 0 0 8.3333%;              /* IE 10 */
+            flex: 0 0 8.3333%;
+        }
+    </style>
+
+</head>
+<body>
+实例0
+<div class="Grid">
+    <div class="Grid-cell u-full">全屏</div>
+
+</div>
+实例2
+<div class="Grid">
+    <div class="Grid-cell u-1of2">1</div>
+    <div class="Grid-cell u-1of2">2</div>
+
+</div>
+实例3
+<div class="Grid">
+    <div class="Grid-cell u-1of3">1</div>
+    <div class="Grid-cell u-1of3">2</div>
+    <div class="Grid-cell u-1of3">3</div>
+</div>
+实例4
+<div class="Grid">
+    <div class="Grid-cell u-1of4">1</div>
+    <div class="Grid-cell u-1of4">2</div>
+    <div class="Grid-cell u-1of4">3</div>
+    <div class="Grid-cell u-1of4">4</div>
+</div>
+实例5
+<div class="Grid">
+    <div class="Grid-cell u-1of5">1</div>
+    <div class="Grid-cell u-1of5">2</div>
+    <div class="Grid-cell u-1of5">3</div>
+    <div class="Grid-cell u-1of5">4</div>
+    <div class="Grid-cell u-1of5">5</div>
+</div>
+实例6
+<div class="Grid">
+    <div class="Grid-cell u-1of6">1</div>
+    <div class="Grid-cell u-1of6">2</div>
+    <div class="Grid-cell u-1of6">3</div>
+    <div class="Grid-cell u-1of6">4</div>
+    <div class="Grid-cell u-1of6">5</div>
+    <div class="Grid-cell u-1of6">6</div>
+
+</div>
+实例7
+<div class="Grid">
+    <div class="Grid-cell u-1of7">1</div>
+    <div class="Grid-cell u-1of7">2</div>
+    <div class="Grid-cell u-1of7">3</div>
+    <div class="Grid-cell u-1of7">4</div>
+    <div class="Grid-cell u-1of7">5</div>
+    <div class="Grid-cell u-1of7">6</div>
+    <div class="Grid-cell u-1of7">7</div>
+</div>
+
+实例8
+<div class="Grid">
+    <div class="Grid-cell u-1of8">1</div>
+    <div class="Grid-cell u-1of8">2</div>
+    <div class="Grid-cell u-1of8">3</div>
+    <div class="Grid-cell u-1of8">4</div>
+    <div class="Grid-cell u-1of8">5</div>
+    <div class="Grid-cell u-1of8">6</div>
+    <div class="Grid-cell u-1of8">7</div>
+    <div class="Grid-cell u-1of8">8</div>
+</div>
+实例9
+<div class="Grid">
+    <div class="Grid-cell u-1of9">1</div>
+    <div class="Grid-cell u-1of9">2</div>
+    <div class="Grid-cell u-1of9">3</div>
+    <div class="Grid-cell u-1of9">4</div>
+    <div class="Grid-cell u-1of9">5</div>
+    <div class="Grid-cell u-1of9">6</div>
+    <div class="Grid-cell u-1of9">7</div>
+    <div class="Grid-cell u-1of9">8</div>
+    <div class="Grid-cell u-1of9">9</div>
+</div>
+</body>
+</html>

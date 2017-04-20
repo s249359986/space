@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab滑动</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="./css/swipe2.css">
+
+</head>
+<body>
+<div class="addWrap">
+    <div class="swipe" id="mySwipe">
+        <div class="swipe-wrap">
+            <div class=""><a href="javascript:;"><img onclick="toPage('http://www.mysoccer.cn')" class="img-responsive" src="http://p9.qhimg.com/t019cf9b76139051443.png"></a></div>
+            <div class=""><a href="javascript:;"><img onclick="toPage('http://www.toutiaozuqiu.com/html/360weishi/index.html?from=singlemessage&isappinstalled=0')" class="img-responsive" src="http://p2.qhimg.com/t01c5316a6f2b00eb9d.png"></a></div>
+            <div class=""><a href="javascript:;"><img onclick="toPage('http://www.toutiaozuqiu.com/html/360weishi/index.html?from=singlemessage&isappinstalled=0')" class="img-responsive" src="http://p2.qhimg.com/t01c5316a6f2b00eb9d.png"></a></div>
+        </div>
+    </div>
+    <ul id="position">
+        <li class="cur"></li>
+        <li class=" "></li>
+        <li class=" "></li>
+
+    </ul>
+</div>
+<script type="text/javascript" src="http://s1.qhimg.com/static/1c44f7af3eca2a0d/jquery-1.9.1.js" ></script>
+<script src="./js/swipe2.js"></script>
+
+
+
+<script>
+    var bullets = document.getElementById('position').getElementsByTagName('li');
+    var banner = new Swipe(document.getElementById('mySwipe'), {
+        startSlide: 0,
+        speed: 600,
+        auto: 400,
+        autoRestart:false,
+        continuous: true,
+        callback: function(pos,elem) {
+            var tempTotal=banner.getNumSlides();
+            var i = bullets.length;
+            while (i--) {
+                bullets[i].className = ' ';
+            }
+            bullets[pos].className = 'cur';
+        }
+    });
+
+//    $("#mySwipe").Swipe({
+//        startSlide: 0,
+//        speed: 600,
+//      //  auto: 3e3,
+//        auto: 0,
+//        autoRestart: !0,
+//        continuous: 0,
+//        callback: function(pos) {
+//        //    return;
+//            var i = bullets.length;
+//            while (i--) {
+//                bullets[i].className = ' ';
+//            }
+//            bullets[pos].className = 'cur';
+//        }
+//    });
+
+
+</script>
+</body>
+</html>

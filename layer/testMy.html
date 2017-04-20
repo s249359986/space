@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <style>
+
+        .laymshade {
+            background-color: rgba(0,0,0, 0.5);
+            /* pointer-events: auto; */
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .layermmain {
+            display: table;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+     .section {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .layermchild {
+            position: relative;
+            display: inline-block;
+            text-align: left;
+            background-color: #fff;
+            font-size: 14px;
+            border-radius: 3px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            pointer-events: auto;
+            max-width: 90%;
+            min-width: 150px;
+        }
+        .layermchild h3 {
+            padding: 0 45px 0 10px;
+            height: 50px;
+            line-height: 50px;
+            border-bottom: 1px solid #EBEBEB;
+            font-size: 16px;
+            font-weight: 400;
+            border-radius: 3px 3px 0 0;
+            border-bottom: 1px solid #EBEBEB;
+        }
+        .layermcont {
+            padding: 20px 15px;
+            line-height: 22px;
+            text-align: center;
+        }
+        .layermend {
+            position: absolute;
+            right: 7px;
+            top: 10px;
+            width: 30px;
+            height: 30px;
+            border: 0;
+            font-weight: 400;
+            background: transparent;
+            cursor: pointer;
+            -webkit-appearance: none;
+            font-size: 30px;
+        }
+        .layermend::before, .layermend::after {
+            position: absolute;
+            left: 5px;
+            top: 15px;
+            content: '';
+            width: 18px;
+            height: 1px;
+            background-color: #999;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            border-radius: 3px;
+        }
+        .layermend::after {
+            position: absolute;
+            left: 5px;
+            top: 15px;
+            content: '';
+            width: 18px;
+            height: 1px;
+            background-color: #999;
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            border-radius: 3px;
+        }
+        .layermbtn {
+            position: relative;
+            height: 40px;
+            line-height: 40px;
+            font-size: 0;
+            text-align: center;
+            border-top: 1px solid #EBEBEB;
+        }
+        .layermbtn:before {
+            content: '\20';
+            position: absolute;
+            width: 1px;
+            height: 39px;
+            left: 50%;
+            top: 0;
+            background-color: #EBEBEB;
+        }
+        .layermbtn span {
+            position: relative;
+            display: inline-block;
+            width: 50%;
+            text-align: center;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 0 3px 0 0;
+        }
+        .layermchild h3, .layermbtn span {
+            background-color: #fff;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+<div class="laymshade">
+
+    <div class="layermmain">
+
+        <div class="section">
+            <div class="layermchild  layermanim">
+
+                <h3 style="">更符合法规</h3>
+                <button class="layermend"></button>
+
+                <div class="layermcont">sfasfasfasfdasdf</div>
+
+                <div class="layermbtn"><span type="1">立即确定</span></div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+</body>
+</html>
