@@ -616,58 +616,30 @@
 <div id="clickBtn1" style="background-color: red;width: 50px;height: 50px;margin: 20px;color: white;">暂停</div>
 <div id="clickBtn2" style="background-color: red;width: 50px;height: 50px;margin: 20px;color: white;">空点</div>
 <script>
-var btObj=$("#test").btAudio({onerror:function (e) {
-    debugger;
-    
-},src:"https://s2.ssl.qhimg.com/static/580445bedaad1b44.mp3"});//https://s2.ssl.qhimg.com/static/580445bedaad1b44.mp3
-var btObj1=$("#test1").btAudio({src:"https://s3.ssl.qhres.com/static/4d6713a55eca18df.mp3",onended:function (e) {
-    debugger;
-}});
 
-//var btObj=$(".test2").btAudio({src:"https://s2.ssl.qhimg.com/static/580445bedaad1b44.mp3"});
-function playOther() {
-    btObj.data("api").play();
-    console.log("clickBtn");
-}
+    var btObj=$("#test1").btAudio({src:"https://s3.ssl.qhres.com/static/4d6713a55eca18df.mp3",onended:function (e) {
+        console.log("onended");
+    },onplay:function (e) {
+        console.log("onplay");
+    },onpause:function (e) {
+        console.log("onpause");
+    },oncanplay:function (e) {
+      console.log("oncanplay");
+    },ontimeupdate:function (e) {
+        console.log(e);
+        console.log("ontimeupdate");
+    }});
+    $("#clickBtn").on("click",function () {
+        btObj.data("api").play();
+    });
+
+    $("#clickBtn1").on("click",function () {
+        btObj.data("api").pause();
+    });
 
 
-$("#clickBtn").on("click",function () {
-    playOther();
-   // btObj1.data("api").pause();
 
-  //  $(btObj1[1]).data("api").play();
-});
-function stopAll() {
-    btObj.data("api").pause();
-    btObj1.data("api").pause();
-}
-$("#clickBtn1").on("click",function () {
-    //$("#alertCheckId").slideDown("slow");
-    console.log("clickBtn1");
-    stopAll();
-});
-$("#clickBtn2").on("click",function () {
-    $("#alertCheckId").slideDown("slow");
-    stopAll();
-});
-function playSCopy() {
-    setTimeout(function () {
-        console.log("dddd");
-        btObj1.data("api").play();
-        console.log(btObj1.data("api").paused);
-    },500);
 
-}
-function playS() {
-//   btObj.data("api").pause();
-    playSCopy();
-    console.log("playS");
-}
-$("#alertCheckId").on("click",function () {
-console.log("clickBtn1");
-    playS();
-  //  $(btObj1[0]).data("api").pause();
-});
 
 
 </script>
