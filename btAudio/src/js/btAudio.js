@@ -27,6 +27,7 @@ if ( window.jQuery || window.Zepto ) {
                 controls:false,
                 autoplay:false,
                 loop:false,
+                onended:null,
                 preload:false,
                 src:""
             };
@@ -42,6 +43,13 @@ if ( window.jQuery || window.Zepto ) {
             }
             _this.loadView();
             _this.audioObj=document.getElementById(opts.audioId);
+            _this.audioObj.onended=function () {
+              
+                if(opts.onended)
+                {
+                    opts.onended(_this);
+                }
+            }
             return {
                 pause:pause,
                 play:play

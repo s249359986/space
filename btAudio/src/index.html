@@ -5,41 +5,665 @@
     <title>Title</title>
     <script src="//cdn.bootcss.com/jquery/2.0.0/jquery.js"></script>
     <script type="text/javascript" src="./js/btAudio.js" ></script>
+    <style>
+        html, body {
+            position: relative;
+            height: 100%;
+            font-size: 14px;
+        }
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color:#000;
+            margin: 0;
+            padding: 0;
+        }
+        img
+        {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+
+
+        .spring
+        {
+            position: relative;
+            /*background-image: url(https://p2.ssl.qhimg.com/d/inn/ece88855/bg.png);*/
+
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            z-index: 20;
+        }
+        .spring .dkR
+        {
+            width: 86%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 60px;
+        }
+        .bannerBg
+        {
+            width:100%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0px;
+        }
+        .spring .dkCash
+        {
+            position: absolute;
+            left: 50%;
+            margin-left: 20%;
+            top: 30%;
+            z-index: 50;
+            max-width: 20%;
+            margin-top: 10%;
+        }
+
+        .summer
+        {
+            position: relative;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            z-index: 30;
+        }
+        .summer .slRLeft
+        {
+            width: 34%;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+        }
+        .summer .slRRight
+        {
+            width: 34%;
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+        }
+
+
+
+
+        .shouye
+        {
+            position: relative;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+
+            z-index: 50;
+        }
+        .shouye .bg
+        {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+        }
+        .defaultCanvas
+        {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 35px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .autumn
+        {
+            position: relative;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            z-index: 40;
+        }
+        .autumn .lwText
+        {
+            width: 60%;
+            margin-top: 60px;
+        }
+
+        .winter
+        {
+            position: relative;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+
+            z-index: 50;
+        }
+
+        .end
+        {
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            z-index: 60;
+        }
+        .swiper-wrapper .Grid
+        {
+            position: absolute;
+            bottom: 20px;
+        }
+        .Grid {
+
+            /*display:-webkit-flex;*/
+            /*display: -moz-flex;*/
+            /*display: -ms-flex;*/
+            /*display: flex;*/
+
+            display: box;              /* OLD - Android 4.4- */
+            display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+            display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+            display: -ms-flexbox;      /* TWEENER - IE 10 */
+            display: -webkit-flex;     /* NEW - Chrome */
+            display: flex;
+
+
+
+
+            /*flex-direction*/
+            /*flex-wrap*/
+            /*flex-flow*/
+            /*justify-content*/
+            /*align-items*/
+            /*align-content*/
+        }
+        .Grid img
+        {
+            width:74%;
+        }
+        #alertCheckId .Grid img
+        {
+            width:54%;
+        }
+        .Grid-cell {
+            /*flex: 1;*/
+            /*-webkit-flex: 1;*/
+            /*-moz-flex: 1;*/
+            /*-ms-flex: 1;*/
+
+            -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 1;         /* OLD - Firefox 19- */
+            -webkit-flex: 1;          /* Chrome */
+            -ms-flex: 1;              /* IE 10 */
+            flex: 1;
+
+
+            /*order*/
+            /*flex-grow*/
+            /*flex-shrink*/
+            /*flex-basis*/
+            /*flex*/
+            /*align-self*/
+        }
+        .Grid-cell.u-1of3 {
+            /*flex: 0 0 33.3333%;*/
+            /*-webkit-flex:  0 0 33.3333%;*/
+            /*-moz-flex:0 0 33.3333%;*/
+            /*-ms-flex:0 0 33.3333%;*/
+
+
+
+            -webkit-box-flex:0 0 33.3333%;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex:0 0 33.3333%;      /* OLD - Firefox 19- */
+            -webkit-flex:0 0 33.3333%;          /* Chrome */
+            -ms-flex:0 0 33.3333%;             /* IE 10 */
+            flex:0 0 33.3333%;
+        }
+
+        .Grid-cell.u-1of4 {
+            -webkit-box-flex:0 0 25%;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex:0 0 25%;       /* OLD - Firefox 19- */
+            /* For old syntax, otherwise collapses. */
+            -webkit-flex:0 0 25%;       /* Chrome */
+            -ms-flex:0 0 25%;              /* IE 10 */
+            flex:0 0 25%;
+
+
+            /*flex: 0 0 25%;*/
+            /*-webkit-flex: 0 0 25%;*/
+            /*-moz-flex:0 0 25%;*/
+            /*-ms-flex:0 0 25%;*/
+        }
+
+        .floadiv .tab
+        {
+            background-color: white;
+            margin: 0 auto;
+            border-radius: 5px;
+            box-sizing: border-box;
+            padding-left: 10px;
+            padding-right: 10px;
+            /*width:70%;*/
+            width:78%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .floadiv .caishen
+        {
+            /*width: 14rem;*/
+
+            width: 18rem;
+            display: block;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+        .btn
+        {
+            display: inline-block;
+            width: 22%;
+        }
+        #textId
+        {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url(https://p4.ssl.qhimg.com/d/inn/1070ba09/diwen.png);
+            line-height: 30px;
+            width: 14rem;
+            height: 6.7rem;
+            font-size: 1.2rem;
+            border: 0px;
+            resize: none;
+            padding-left: 16px;
+            padding-right: 16px;
+            box-sizing: border-box;
+        }
+        .play
+        {
+            position: absolute;
+            top: 0.96rem;
+            right:0.96rem;
+            z-index: 50;
+            width: 2.328rem;
+            display: none;
+        }
+        .pause
+        {
+            position: absolute;
+            top: 0.96rem;
+            right:0.96rem;
+            z-index: 50;
+            width: 2.328rem;
+        }
+
+
+        .playEnd
+        {
+            position: absolute;
+            top: 0.96rem;
+            right:0.96rem;
+            z-index: 50;
+            width: 2.328rem;
+            display: none;
+        }
+        .pauseEnd
+        {
+            position: absolute;
+            top: 0.96rem;
+            right:0.96rem;
+            z-index: 50;
+            width: 2.328rem;
+        }
+
+
+
+
+
+
+        .fangyingji
+        {
+            position: absolute;
+            right: 1rem;
+            top: 18.5rem;
+            width: 7rem;
+            z-index: 50;
+
+            animation-name: laba;
+            animation-duration:0.1s;
+            animation-timing-function: cubic-bezier(0.42,0,0.58,1);
+            animation-iteration-count:infinite;
+            animation-direction:reverse;
+
+
+
+
+            -webkit-animation-name: laba;
+            -webkit-animation-duration:0.1s;
+            -webkit-animation-timing-function: cubic-bezier(0.42,0,0.58,1);
+            -webkit-animation-iteration-count:infinite;
+            -webkit-animation-direction:alternate;
+
+
+            -moz-animation-name: laba;
+            -moz-animation-duration:0.1s;
+            -moz-animation-timing-function: cubic-bezier(0.42,0,0.58,1);
+            -moz-animation-iteration-count:infinite;
+            -moz-animation-direction:alternate;
+
+            -ms-animation-name: laba;
+            -ms-animation-duration:0.1s;
+            -ms-animation-timing-function: cubic-bezier(0.42,0,0.58,1);
+            -ms-animation-iteration-count:infinite;
+            -ms-animation-direction:alternate;
+
+
+            -o-animation-name: laba;
+            -o-animation-duration:0.1s;
+            -o-animation-timing-function: cubic-bezier(0.42,0,0.58,1);
+            -o-animation-iteration-count:infinite;
+            -o-animation-direction:alternate;
+        }
+
+
+        .footer_download{
+            background-image: url(https://p0.ssl.qhimg.com/d/inn/8ee7a63e/downSz_bg.png);
+            background-repeat: no-repeat;
+            background-size: 100% 60px;
+            display: block;
+            color: black;
+            width: 60%;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            text-decoration: none;
+            margin: 0 auto;
+            font-size: 15px;
+            border: 0px solid black;
+        }
+
+        #cnzz_stat_icon_1256424351
+        {
+            display: none;
+        }
+
+
+        /*新的动画*/
+        @keyframes cash{
+            from {transform: translateY(0px); }
+            to {transform: translateY(60px); }
+        }
+        @-o-keyframes cash{
+            from {transform: translateY(0px); }
+            to {transform: translateY(60px); }
+        }
+        @-moz-keyframes cash{
+            from {transform: translateY(0px); }
+            to {transform: translateY(60px); }
+        }
+        @-webkit-keyframes cash{
+            from {transform: translateY(0px); }
+            to {transform: translateY(60px); }
+        }
+        .cash
+        {
+            animation-name: cash;
+            animation-duration:2s;
+            animation-timing-function: linear;
+            animation-iteration-count:infinite;
+
+
+            -webkit-animation-name: cash;
+            -webkit-animation-duration:2s;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-iteration-count:infinite;
+
+
+            -moz-animation-name: cash;
+            -moz-animation-duration:2s;
+            -moz-animation-timing-function: linear;
+            -moz-animation-iteration-count:infinite;
+
+            -ms-animation-name: cash;
+            -ms-animation-duration:2s;
+            -ms-animation-timing-function: linear;
+            -ms-animation-iteration-count:infinite;
+
+
+            -o-animation-name: cash;
+            -o-animation-duration:2s;
+            -o-animation-timing-function: linear;
+            -o-animation-iteration-count:infinite;
+
+        }
+        /*动画*/
+
+
+
+
+
+
+        @keyframes move{
+            0%, 100% {
+                -webkit-transform: translateY(5px);
+            }
+
+            50% {
+                -webkit-transform: translate(0);
+            }
+            0%, 100% {
+                transform: translateY(5px);
+            }
+
+            50% {
+                transform: translate(0);
+            }
+        }
+        @-o-keyframes move{
+            0%, 100% {
+                -webkit-transform: translateY(5px);
+            }
+
+            50% {
+                -webkit-transform: translate(0);
+            }
+
+            0%, 100% {
+                transform: translateY(5px);
+            }
+
+            50% {
+                transform: translate(0);
+            }
+        }
+        @-moz-keyframes move{
+            0%, 100% {
+                -webkit-transform: translateY(5px);
+            }
+
+            50% {
+                -webkit-transform: translate(0);
+            }
+
+
+
+            0%, 100% {
+                transform: translateY(5px);
+            }
+
+            50% {
+                transform: translate(0);
+            }
+        }
+        @-webkit-keyframes move{
+            0%, 100% {
+                -webkit-transform: translateY(5px);
+            }
+
+            50% {
+                -webkit-transform: translate(0);
+            }
+
+
+            0%, 100% {
+                transform: translateY(5px);
+            }
+
+            50% {
+                transform: translate(0);
+            }
+        }
+        @-webkit-keyframes opa {
+            0% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.5;
+            }
+        }
+        .back
+        {
+            width: 40px;
+            float: right;
+            margin-right: 6px;
+            margin-top: 6px;
+        }
+
+
+
+
+
+    </style>
 </head>
 <body>
 <div id="test"></div>
-<!--<div id="test1"></div>-->
+<div id="test1"></div>
 <!--<div class="test2"></div>-->
 
 <!--<div class="test2"></div>-->
 
 
+<!--<audio id="ldkAudioId" src="https://s1.ssl.qhres.com/static/75cd5e79253dfcee.mp3" preload style="display: none;"></audio>-->
+<!--<audio id="slAudioId" src="https://s3.ssl.qhres.com/static/4d6713a55eca18df.mp3" preload style="display: none;"></audio>-->
+<!--<audio id="kdAudioId" src="https://s2.ssl.qhres.com/static/96204059c9a8dbba.mp3" preload style="display: none;"></audio>-->
+<!--<audio id="qzAudioId" src="https://s0.ssl.qhres.com/static/bc220b0aed558cf3.mp3" preload style="display: none;"></audio>-->
+<!--<audio id="gAudioId" src="https://s1.ssl.qhres.com/static/0c1329a9c96ba75f.mp3" preload style="display: none;"></audio>-->
+<!--<audio id="jAudioId" src="https://s3.ssl.qhres.com/static/7b9fe5c54df91673.mp3" preload style="display: none;"></audio>-->
+
+<div id="alertCheckId" style="display: none;position: fixed;width: 100%;height: 100%;left: 0px;top: 0px;z-index: 20;background:rgba(0,0,0,0.7);">
 
 
 
-<div id="clickBtn">播放</div>
-<div id="clickBtn1">暂停</div>
 
+
+    <div style="width: 100%;margin-left: auto;margin-right: auto;position: absolute;bottom: 0px;">
+        <img class="bannerBg resultIcon" style="width: 90%;margin-bottom: -10px;display: none;position: relative;z-index: -1;" src="https://p2.ssl.qhimg.com/d/inn/8ee7a63e/tc_ans_0.png">
+        <img class="bannerBg resultIcon" style="width: 90%;margin-bottom: -10px;display: none;position: relative;z-index: -1;" src="https://p3.ssl.qhimg.com/d/inn/8ee7a63e/tc_ans_1.png">
+        <div style="width: 100%;background-color: white;margin-left: auto;margin-right: auto;">
+            <div style="width: 100%;height: 30px;">
+
+                <img id="backId" class="back" src="https://p1.ssl.qhimg.com/d/inn/2bc30484/back.png">
+
+            </div>
+            <img class="bannerBg" style="width:82%;" src="https://p1.ssl.qhimg.com/d/inn/2bc30484/tc_gai.png">
+
+
+
+            <div class="Grid" style="display: flex;display:-webkit-flex;display: -moz-flex;display: -ms-flex;margin-top: 30px;">
+                <div data-key="-1" class="Grid-cell u-1of3 result"><img data-src="https://p5.ssl.qhimg.com/d/inn/8ee7a63e/tc_gg1.png" src="https://p2.ssl.qhimg.com/d/inn/8ee7a63e/tc_gg.png"></div>
+                <div data-key="1,4,2" class="Grid-cell u-1of3 result"><img data-src="https://p3.ssl.qhimg.com/d/inn/8ee7a63e/tc_qz1.png" src="https://p2.ssl.qhimg.com/d/inn/8ee7a63e/tc_qz.png"></div>
+                <div data-key="-1" class="Grid-cell u-1of3 result"><img data-src="https://p3.ssl.qhimg.com/d/inn/8ee7a63e/tc_jr1.png" src="https://p2.ssl.qhimg.com/d/inn/8ee7a63e/tc_jr.png"></div>
+            </div>
+            <div class="Grid" style="display: flex;display:-webkit-flex;display: -moz-flex;display: -ms-flex;display:-webkit-box;display: -ms-flexbox;display: -moz-box;margin-top: 30px;">
+                <div data-key="3" class="Grid-cell u-1of3 result"><img data-src="https://p0.ssl.qhimg.com/d/inn/8ee7a63e/tc_kd1.png" src="https://p4.ssl.qhimg.com/d/inn/8ee7a63e/tc_kd.png"></div>
+                <div data-key="-1" class="Grid-cell u-1of3 result"><img data-src="https://p2.ssl.qhimg.com/d/inn/8ee7a63e/tc_zj1.png" src="https://p5.ssl.qhimg.com/d/inn/8ee7a63e/tc_zj.png"></div>
+                <div data-key="-1" class="Grid-cell u-1of3 result"><img data-src="https://p2.ssl.qhimg.com/d/inn/8ee7a63e/tc_qt1.png" src="https://p5.ssl.qhimg.com/d/inn/8ee7a63e/tc_qt.png"></div>
+            </div>
+            <div style="width: 100%;height: 30px;"></div>
+        </div>
+    </div>
+</div>
+
+<div id="clickBtn" style="background-color: red;width: 50px;height: 50px;margin: 20px;color: white;">播放</div>
+<div id="clickBtn1" style="background-color: red;width: 50px;height: 50px;margin: 20px;color: white;">暂停</div>
+<div id="clickBtn2" style="background-color: red;width: 50px;height: 50px;margin: 20px;color: white;">空点</div>
 <script>
-
-
 var btObj=$("#test").btAudio({src:"https://s2.ssl.qhimg.com/static/580445bedaad1b44.mp3"});
-
-
-
-//var btObj=$("#test1").btAudio({src:"https://s2.ssl.qhimg.com/static/580445bedaad1b44.mp3"});
+var btObj1=$("#test1").btAudio({src:"https://s3.ssl.qhres.com/static/4d6713a55eca18df.mp3"});
+debugger;
 //var btObj=$(".test2").btAudio({src:"https://s2.ssl.qhimg.com/static/580445bedaad1b44.mp3"});
-
-$("#clickBtn").click(function () {
-
+function playOther() {
     btObj.data("api").play();
+    console.log("clickBtn");
+}
+
+
+$("#clickBtn").on("click",function () {
+    playOther();
+   // btObj1.data("api").pause();
+
   //  $(btObj1[1]).data("api").play();
 });
-$("#clickBtn1").click(function () {
-
+function stopAll() {
     btObj.data("api").pause();
+    btObj1.data("api").pause();
+}
+$("#clickBtn1").on("click",function () {
+    //$("#alertCheckId").slideDown("slow");
+    console.log("clickBtn1");
+    stopAll();
+});
+$("#clickBtn2").on("click",function () {
+    $("#alertCheckId").slideDown("slow");
+    stopAll();
+});
+function playSCopy() {
+    setTimeout(function () {
+        console.log("dddd");
+        btObj1.data("api").play();
+        console.log(btObj1.data("api").paused);
+    },500);
+
+}
+function playS() {
+//   btObj.data("api").pause();
+    playSCopy();
+    console.log("playS");
+}
+$("#alertCheckId").on("click",function () {
+console.log("clickBtn1");
+    playS();
   //  $(btObj1[0]).data("api").pause();
 });
+
 
 </script>
 
