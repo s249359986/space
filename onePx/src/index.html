@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>1px</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  </head>
+
+
+<style>
+.background-gradient-1px {
+background:
+linear-gradient(180deg, red, red 50%, transparent 50%) top    left  / 100% 1px no-repeat,
+linear-gradient(90deg,  red, red 50%, transparent 50%) top    right / 1px 100% no-repeat,
+linear-gradient(0,      red, red 50%, transparent 50%) bottom right / 100% 1px no-repeat,
+linear-gradient(-90deg, red, red 50%, transparent 50%) bottom left  / 1px 100% no-repeat;
+}
+/* 或者 */
+/*.background-gradient-1px
+{
+background: -webkit-gradient(linear, left top, left bottom, color-stop(.5, transparent), color-stop(.5, #c8c7cc), to(#c8c7cc)) left bottom repeat-x;
+background-size: 100% 1px;
+}*/
+
+</style>
+
+  <body>
+
+
+    <div class="background-gradient-1px"> linear-gradient</div>
+
+<div style="border:.333333px solid red;margin-top:30px;">边框0.3333像素</div>
+<div style="border:.5px solid red;margin-top:30px;">边框0.5像素</div>
+<div style="border:1px solid red;margin-top:30px;">边框1像素</div>
+<div style="border:2px solid red;margin-top:30px;">边框2像素</div>
+<script>
+
+alert(window.devicePixelRatio);
+
+</script>
+  </body>
+</html>
