@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>两个平级的块元素保持高低一致</title>
+    <style>
+
+    html
+    {
+      padding: 0px;margin: 0px;
+      font-size: 100px;
+    }
+    body
+    {
+      padding: 0px;margin: 0px;
+      font-size: 16px;
+
+    }
+    .btn-select .select-box{
+    display: inline-block;
+    width: .3rem;
+    height: .3rem;
+    border: 1px solid $gray;
+    border-radius: .08rem;
+    vertical-align: middle;/*关键点*/
+
+}
+.btn-select .select-desc{
+    display: inline-block;
+    line-height: .3rem;
+    margin-left: .2rem;
+    vertical-align: middle; /*关键点*/
+}
+    </style>
+  </head>
+  <body>
+<div class="btn-select">
+<input class="select-box" name="Fruit" type="radio" value="" />
+<span class="select-desc">
+描述
+</span>
+
+
+</div>
+  </body>
+</html>

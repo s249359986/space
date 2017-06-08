@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>关于rem</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+       function(a,b){
+        var c = a.documentElement;
+        var d ="orientationchange"in window?"orientationchange":"resize"
+        var e = function(){
+            var a = c.clientWidth;
+            a && (c.style.fontSize = 100 * (a / 375) + "px")
+        };
+        e();
+        a.addEventListener && b.addEventListener(d,e,!1)
+       }(document,window);
+    </script>
+  </body>
+</html>
