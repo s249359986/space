@@ -4,7 +4,94 @@
 /*
 *
 * js cookie操作
+*
 * */
+
+
+/*
+CookieUtils
+*/
+
+(function () {
+      if (typeof window.CookieUtils === 'object') {
+        console.warn('已经引入了CookieUtils');
+        return;
+      }
+
+      var config = {
+        //公共cookie列表数据
+        publicCookie: {"allowKey":true},
+        //设置路径
+        path: "/",
+        //设置主域名
+        domain: ".daojia.com"
+      };
+
+      window.CookieUtils = {
+        /**设置cookie
+          * @param key （string） [必传] 要设置的cookie的key必须在到家公共cookie列表里
+          * @param value（string）[必传] 要设置cookie的值
+          * @param expires（number | string | null）[可选] 不传默认设置为会话cookie，传入number格式，以天数为计算单位，如需其他粒度的时间可自行传入格式化(toUTCString)好的字符串
+          * @param config (object) [可选]{
+          *        @param encode (boolean) [可选，对传入的值是否进行encodeURIComponent编码，默认不编码，值为false]
+          *        @param secure (boolean) [可选，默认false]
+          * }
+          * @return (string) 赋值给document.cookie的值
+          */
+        set: function (key, value, expires, options) {
+          return this._handle(key, value, expires, options);
+        },
+        /**获取cookie
+         * @param key （string） [必传] 要获取的cookie的key必须在到家公共cookie列表里
+         * @param raw  (boolean) [可选] 对获取的值会默认应用decodeURIComponent解码，如需要源格式输出，请设置为true
+         * @return (string | null) 如果存在则返回的cookie的值，不存在返回null
+         */
+        get: function (key, raw) {
+          return this._handle(key, { "raw": raw });
+        },
+        /**删除cookie
+         * @param key （string） [必传] 要删除的cookie的key必须在到家公共cookie列表里
+         */
+        remove: function (key) {
+          this._handle(key, null);
+        },
+        _handle: function (key, value, expires, options) {
+          var days, time, result, decode;
+
+          if (!config['publicCookie'][key]) {
+            console.error('cookie的key不在公用参数列表中！');
+          }
+          if (arguments.length > 1 && String(value) !== "[object Object]") {
+            options = typeof options === "object" ? options : {};
+            if (value === null || value === undefined) expires = -1;
+            if (typeof expires === 'number') {
+              days = expires * 24 * 60 * 60 * 1000;
+              time = new Date();
+              time.setTime(time.getTime() + days);
+              expires = time.toUTCString();
+            }
+            value = String(value);
+
+            return (document.cookie = [
+              encodeURIComponent(key), '=',
+              options.encode ? encodeURIComponent(value) : value,
+              expires ? '; expires=' + expires : '',
+              '; path =' + config.path,
+              '; domain =' + config.domain,
+              options.secure ? '; secure' : ''
+            ].join(''))
+          }
+
+          options = value || {}
+          decode = options.raw ? function (s) { return s } : decodeURIComponent
+          return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null
+        }
+      }
+    }());
+
+
+
+
 
 function setCookie(name , value)
 {
@@ -173,7 +260,7 @@ function browser() {
     return browser;
 }
 /*
-* 
+*
 * 微信提示
 * */
 function wechat() {
@@ -316,4 +403,3 @@ function getFlatternDistance(lat1,lng1,lat2,lng2){
 function getRandom(shangxian,xiaxian) {
    return parseInt(Math.random()*(shangxian-xiaxian+1)+xiaxian);
 }
-
